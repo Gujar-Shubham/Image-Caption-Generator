@@ -112,7 +112,7 @@ def generate_desc(model, tokenizer, photo, max_length):
         if word == 'endseq':
             break
     final = in_text.split()
-    final = final[0:-1]
+    final = final[1:-1]
     final = ' '.join(final)
     return final
 
