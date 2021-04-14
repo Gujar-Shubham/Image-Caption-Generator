@@ -27,8 +27,8 @@ from gevent.pywsgi import WSGIServer
 app = Flask(__name__)
 
 # Model saved with Keras model.save()
-MODEL_PATH = 'D:/Image Caption Web App/models/model_27.h5'
-Tokenizer = 'D:/Image Caption Web App/models/tokenizer.pkl'
+MODEL_PATH = 'model_27.h5'
+Tokenizer = 'tokenizer.pkl'
 # Load your trained model
 model = load_model(MODEL_PATH)
 # model._make_predict_function()          # Necessary
@@ -45,11 +45,11 @@ print('Model loaded. Check http://127.0.0.1:5000/')
 def model_predict(filename, model):
     # load the tokenizer
     tokenizer = load(
-        open('D:/Image Caption Web App/models/tokenizer.pkl', 'rb'))
+        open('tokenizer.pkl', 'rb'))
     # pre-define the max sequence length (from training)
     max_length = 34
     # load the model
-    model = load_model('D:/Image Caption Web App/models/model_27.h5')
+    model = load_model('model_27.h5')
     # load and prepare the photograph
     photo = extract_features(filename)
     description = generate_desc(model, tokenizer, photo, max_length)
